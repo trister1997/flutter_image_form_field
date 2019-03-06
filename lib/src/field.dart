@@ -26,7 +26,9 @@ class ImageFormField<T extends Object> extends FormField<List<T>> {
       FormFieldValidator<List<T>> validator,
       TextStyle errorTextStyle,
       bool autovalidate = false,
-      bool shouldAllowMultiple = true})
+      bool shouldAllowMultiple = true,
+      double imageHeight
+      })
       : assert(autovalidate != null),
         super(
           key: key,
@@ -55,6 +57,7 @@ class ImageFormField<T extends Object> extends FormField<List<T>> {
               ImagesPreview<T>(
                 controller: state._effectiveController,
                 previewImageBuilder: previewImageBuilder,
+                height: imageHeight,
               )
             ]);
           },
