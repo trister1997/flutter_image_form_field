@@ -9,11 +9,11 @@ class _ImagePreview<T> extends StatelessWidget {
     Key key,
     @required this.image,
     @required this.previewImageBuilder,
-    this.onRemove,
+    @required this.onRemove,
   }) : super(key: key);
 
   final T image;
-  final VoidCallback onRemove;
+  final RemoveImageCallback<T> onRemove;
   final BuildImagePreviewCallback<T> previewImageBuilder;
 
   @override
@@ -24,7 +24,9 @@ class _ImagePreview<T> extends StatelessWidget {
         children: [
           previewImageBuilder(context, image),
           GestureDetector(
-            onTap: onRemove,
+            onTap: () {
+              onRemove(image);
+            },
             child: const Icon(
               Icons.close,
               color: const Color(0xFFFFFFFF)
@@ -40,9 +42,11 @@ class ImagesPreview<T> extends StatefulWidget {
   const ImagesPreview({
     @required this.controller,
     @required this.previewImageBuilder,
+    @required this.onRemove,
     this.height
   });
 
+  final RemoveImageCallback<T> onRemove;
   final ImageFieldController<T> controller;
   final BuildImagePreviewCallback<T> previewImageBuilder;
   final double height;
@@ -60,7 +64,8 @@ class _ImagesPreviewState<T> extends State<ImagesPreview> {
     return _ImagePreview<T>(
         image: image,
         previewImageBuilder: widget.previewImageBuilder,
-        onRemove: () => widget.controller.remove(image));
+        onRemove: widget.onRemove
+    );
   }
 
   @override

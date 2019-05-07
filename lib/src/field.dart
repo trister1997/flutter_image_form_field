@@ -21,6 +21,7 @@ class ImageFormField<T extends Object> extends FormField<List<T>> {
       @required BuildImagePreviewCallback<T> previewImageBuilder,
       @required BuildButton buttonBuilder,
       @required InitializeFileAsImageCallback<T> initializeFileAsImage,
+      @required RemoveImageCallback<T> onRemove,
       List<T> initialValue,
       FormFieldSetter<List<T>> onSaved,
       FormFieldValidator<List<T>> validator,
@@ -58,6 +59,7 @@ class ImageFormField<T extends Object> extends FormField<List<T>> {
                 controller: state._effectiveController,
                 previewImageBuilder: previewImageBuilder,
                 height: imageHeight,
+                onRemove: onRemove,
               )
             ]);
           },
