@@ -15,4 +15,7 @@ dependencies:
   flutter:
     sdk: flutter
   image_picker: ^0.5.0+9
-  image_cropper: ^1.0.1
+  image_cropper:
+    git:
+      url: https://github.com/hnvn/flutter_image_cropper.git
+      ref: master
