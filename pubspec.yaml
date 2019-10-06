@@ -1,6 +1,6 @@
 name: image_form_field
 description: Upload images in Flutter forms
-version: 0.0.4
+version: 0.0.4+1
 homepage: https://github.com/tshedor/flutter_image_form_field
 author: Tim Shedor <opensource@timshedor.com>
 
@@ -14,4 +14,9 @@ dev_dependencies:
 dependencies:
   flutter:
     sdk: flutter
-  image_picker: ^0.6.1+4
+#   image_picker: ^0.6.1+4
+image_picker:
+    git:
+      url: git@github.com:miguelpruivo/plugins.git
+      path: packages/image_picker
+      ref: image_picker-Fix-#41046
